@@ -6,9 +6,17 @@ namespace App\Controller;
 
 use App\Model\User;
 
+/**
+ * Class UserController
+ *
+ * @package App\Controller
+ */
 class UserController extends AbstractController
 {
-    public function getName()
+    /**
+     * Returns page with user name
+     */
+    public function getName(): void
     {
         $id = (int) $_GET['id'];
         $user = $this->getUserById($id);
@@ -19,7 +27,10 @@ class UserController extends AbstractController
         ]);
     }
 
-    public function getId()
+    /**
+     * Returns page with user id
+     */
+    public function getId(): void
     {
         $id = (int) $_GET['id'];
         $user = $this->getUserById($id);
@@ -30,6 +41,13 @@ class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * Returns User model from storage by id
+     *
+     * @param int $id - user identifier
+     *
+     * @return User
+     */
     private function getUserById(int $id): User
     {
         $storage = [

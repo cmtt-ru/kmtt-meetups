@@ -7,6 +7,11 @@ use App\Controller\UserController;
 
 class Application
 {
+    /**
+     * Web Application routes
+     *
+     * @var array
+     */
     private $routes = [
         '' => [
             'controller' => MainController::class,
@@ -22,7 +27,10 @@ class Application
         ]
     ];
 
-    public function run()
+    /**
+     * Runs Application
+     */
+    public function run(): void
     {
         $path = $_SERVER['PATH_INFO'] ?? '';
 
