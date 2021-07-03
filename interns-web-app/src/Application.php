@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Controller\MainController;
+use App\Controller\UploadController;
 use App\Controller\UserController;
 
 class Application
@@ -13,7 +14,7 @@ class Application
      * @var array
      */
     private $routes = [
-        '' => [
+        '/' => [
             'controller' => MainController::class,
             'action' => 'index'
         ],
@@ -24,7 +25,20 @@ class Application
         '/user/id' => [
             'controller' => UserController::class,
             'action' => 'getId'
+        ],
+        '/upload'=>[
+            'controller'=>UploadController::class,
+            'action'=>'showupload'
+        ],
+        '/uploadfile'=>[
+            'controller'=>UploadController::class,
+            'action'=>'uploadin'
+        ],
+        '/show'=>[
+            'controller'=>UploadController::class,
+            'action'=>'show'
         ]
+
     ];
 
     /**
@@ -32,9 +46,11 @@ class Application
      */
     public function run(): void
     {
-        $path = $_SERVER['PATH_INFO'] ?? '';
-
+        $url = $_SERVER['REQUEST_URI'] ?? '';
+        $url_info=parse_url($url);
+        $path=$url_info['path'];
         if (!isset($this->routes[$path])) {
+            var_dump($path);
             echo '404 not found';
             return;
         }

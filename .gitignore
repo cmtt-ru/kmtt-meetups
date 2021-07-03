@@ -1,3 +1,7 @@
 .DS_Store
 .idea
 vendor/
+/interns-web-app/conf.d
+/interns-web-app/docker-compose.yml
+uploaded/
+composer.lock
