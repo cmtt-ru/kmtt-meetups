@@ -1,50 +1,21 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Controller;
 
-
 class UploadController
 {
-    public $file;
-    public $file_tmp;
-    public $input_file;
-    private const file_path = '../uploaded/';
-    public $url_file;
-    public function showupload()
-    {
-        ob_start();
+    private const filePath = ROOT.'/uploaded/';
 
-        include '../src/View/form-upload.php';
-
-        ob_flush();
-    }
-    public function filedir()
+    public function filedir():string
     {
-        return self::file_path.basename(md5(microtime()).'.png');
+        return self::filePath.basename(md5(microtime()).'.png');
     }
-    public function uploadin()
+    public function uploadIn():void
     {
-        $this->file=$_FILES;
-        $this->file_tmp=$this->file['userfile']['tmp_name'];
-        if (move_uploaded_file($this->file_tmp,$this->filedir() ))
+        if (move_uploaded_file($_FILES['userfile']['tmp_name'],$this->filedir() )) {
             header("Location:../");
-    }
-    public function show()
-    {
-        if(!(isset($_GET)))
-        {
-            echo "введите название изображения";
         }
-        $this->input_file=$_GET;
-        if (array_key_exists('image',$this->input_file))
-        {
-            $this->url_file=self::file_path.$this->input_file['image'];
-            var_dump($this->url_file);
-            echo "<img src='".$this->url_file.".png'/>";
-//            var_dump(scandir('../'));
-
-        }
-
     }
 }

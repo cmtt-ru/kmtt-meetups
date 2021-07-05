@@ -2,3 +2,4 @@
     Отправить этот файл: <input name="userfile" type="file" />
     <input type="submit" value="Отправить файл" />
 </form>
+
