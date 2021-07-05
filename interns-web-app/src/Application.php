@@ -53,7 +53,6 @@ class Application
         $url_info=parse_url($url);
         $path=$url_info['path'];
         if ( !isset($this->routes[$path]) ) {
-            var_dump($path);
             echo '404 not found';
             return;
         }

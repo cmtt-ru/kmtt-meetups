@@ -8,7 +8,6 @@ class ShowController extends AbstractController
     public $urlFile;
     private const FilePath = '../uploaded/';
 
-
     public function uploadForm()
     {
         return $this->render('form-upload');

@@ -14,6 +14,9 @@ abstract class AbstractController
      */
     protected function render(string $template, array $params=[])
     {
+        ob_start();
+        echo "hello";
         include '../src/View/' . $template. '.php';
+        ob_flush();
     }
 }
