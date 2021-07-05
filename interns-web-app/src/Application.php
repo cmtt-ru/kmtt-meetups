@@ -31,7 +31,7 @@ class Application
         ],
         '/upload' => [
             'controller' => ShowController::class,
-            'action' =>'uploadForm'
+            'action' => 'uploadForm'
         ],
         '/uploadfile' => [
             'controller' => UploadController::class,
@@ -50,17 +50,17 @@ class Application
     public function run(): void
     {
         $url = $_SERVER['REQUEST_URI'] ?? '';
-        $url_info=parse_url($url);
-        $path=$url_info['path'];
-        if ( !isset($this->routes[$path]) ) {
+        $urlInfo = parse_url($url);
+        $path = $urlInfo['path'];
+        if (!isset($this->routes[$path])) {
             echo '404 not found';
             return;
         }
 
-        $route = $this -> routes[$path];
+        $route = $this->routes[$path];
         $controller = $route['controller'];
         $action = $route['action'];
 
-        (new $controller) -> $action();
+        (new $controller)->$action();
     }
 }

@@ -12,11 +12,10 @@ abstract class AbstractController
      * @param string $template - View layer file
      * @param array $params - View params
      */
-    protected function render(string $template, array $params=[])
+    protected function render(string $template, array $params = [])
     {
         ob_start();
-        echo "hello";
-        include '../src/View/' . $template. '.php';
+        include '../src/View/' . $template . '.php';
         ob_flush();
     }
 }
