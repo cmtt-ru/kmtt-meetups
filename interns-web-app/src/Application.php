@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use App\Controller\MainController;
+use App\Controller\ShowController;
+use App\Controller\UploadController;
 use App\Controller\UserController;
 
 class Application
@@ -13,7 +17,7 @@ class Application
      * @var array
      */
     private $routes = [
-        '' => [
+        '/' => [
             'controller' => MainController::class,
             'action' => 'index'
         ],
@@ -24,7 +28,20 @@ class Application
         '/user/id' => [
             'controller' => UserController::class,
             'action' => 'getId'
+        ],
+        '/upload' => [
+            'controller' => ShowController::class,
+            'action' => 'uploadForm'
+        ],
+        '/uploadfile' => [
+            'controller' => UploadController::class,
+            'action' => 'uploadIn'
+        ],
+        '/show' => [
+            'controller' => ShowController::class,
+            'action' => 'showImage'
         ]
+
     ];
 
     /**
@@ -32,8 +49,9 @@ class Application
      */
     public function run(): void
     {
-        $path = $_SERVER['PATH_INFO'] ?? '';
-
+        $url = $_SERVER['REQUEST_URI'] ?? '';
+        $urlInfo = parse_url($url);
+        $path = $urlInfo['path'];
         if (!isset($this->routes[$path])) {
             echo '404 not found';
             return;
