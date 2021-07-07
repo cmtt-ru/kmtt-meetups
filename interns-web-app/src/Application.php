@@ -17,19 +17,19 @@ class Application
      * @var array
      */
     private $routes = [
+//        '/' => [
+//            'controller' => MainController::class,
+//            'action' => 'index'
+//        ],
+//        '/user/name' => [
+//            'controller' => UserController::class,
+//            'action' => 'getName'
+//        ],
+//        '/user/id' => [
+//            'controller' => UserController::class,
+//            'action' => 'getId'
+//        ],
         '/' => [
-            'controller' => MainController::class,
-            'action' => 'index'
-        ],
-        '/user/name' => [
-            'controller' => UserController::class,
-            'action' => 'getName'
-        ],
-        '/user/id' => [
-            'controller' => UserController::class,
-            'action' => 'getId'
-        ],
-        '/upload' => [
             'controller' => ShowController::class,
             'action' => 'uploadForm'
         ],
