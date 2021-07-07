@@ -1,6 +1,6 @@
 <?php
 
-//declare(strict_types=1);
+declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -44,7 +44,5 @@ class UploadController extends AbstractController
             }
         }
         $this->render('uploadedImages',$this->uploadedFiles);
-//        exit('ошибок нет , Все загруженно успешно');
-
     }
 }

@@ -17,18 +17,6 @@ class Application
      * @var array
      */
     private $routes = [
-//        '/' => [
-//            'controller' => MainController::class,
-//            'action' => 'index'
-//        ],
-//        '/user/name' => [
-//            'controller' => UserController::class,
-//            'action' => 'getName'
-//        ],
-//        '/user/id' => [
-//            'controller' => UserController::class,
-//            'action' => 'getId'
-//        ],
         '/' => [
             'controller' => ShowController::class,
             'action' => 'uploadForm'
@@ -41,7 +29,6 @@ class Application
             'controller' => ShowController::class,
             'action' => 'showImage'
         ]
-
     ];
 
     /**
