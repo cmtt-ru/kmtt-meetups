@@ -18,8 +18,8 @@ class Application
      */
     private $routes = [
         '/' => [
-            'controller' => ShowController::class,
-            'action' => 'uploadForm'
+            'controller' => MainController::class,
+            'action' => 'mainPage'
         ],
         '/uploadfile' => [
             'controller' => UploadController::class,

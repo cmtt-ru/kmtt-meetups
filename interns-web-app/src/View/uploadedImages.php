@@ -9,10 +9,10 @@
 </head>
 <body>
 <?php
-//var_dump($params);
 foreach ($params as $readyimage){
     echo $readyimage;
 }
 ?>
+
 </body>
 </html>

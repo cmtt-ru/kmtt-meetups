@@ -4,15 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-class ShowController extends AbstractController
+class ShowController
 {
     public $urlFile;
     private const FILEPATH = '../uploaded/';
-
-    public function uploadForm(): void
-    {
-        $this->render('form-upload');
-    }
 
     public function showImage(): void
     {

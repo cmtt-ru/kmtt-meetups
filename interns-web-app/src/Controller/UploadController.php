@@ -32,9 +32,9 @@ class UploadController extends AbstractController
     public function uploadIn(): void
     {
         $this->uploadedFiles=[];
-        $this->countImage = $total = count($_FILES['files']['name']);
+        $this->countImage = count($_FILES['files']['name']);
         $this->image = $_FILES['files'];
-        for ($i = 0; $i < $total; $i++) {
+        for ($i = 0; $i < $this->countImage; $i++) {
             if ($this->IsImage($this->image, $i)) {
                 if (move_uploaded_file($this->image['tmp_name'][$i], $this->fileDir())){
                     $this->uploadedFiles[]="<a href='http://localhost:8080/show?image=".$this->nameImage."'>Картинка {$i} </a></br>";
