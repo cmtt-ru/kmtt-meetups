@@ -10,7 +10,7 @@
 </head>
 <style>
     .upForm {
-        background: black;
+        background: #000000;
         color: white;
         border-radius: 1em;
         padding: 1em;
@@ -29,6 +29,7 @@
 </style>
 <body>
 <div class="upForm">
+
     <form method="post" action="/uploadfile" enctype="multipart/form-data" id="frmImgUpload">
         <label class="btn btn-success" for="file_id">
             <input name="files[]" id="file_id" type="file" accept="image/*" data-type='image' multiple="true"
@@ -37,7 +38,8 @@
         </label>
         <br>
         <button type="submit" id="otpravka" class="btn btn-success">Отправить</button>
+    </form>
+
 </div>
-</form>
 </body>
 </html>

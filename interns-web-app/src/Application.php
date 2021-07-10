@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace App;
 
 use App\Controller\MainController;
-use App\Controller\ShowController;
 use App\Controller\UploadController;
-use App\Controller\UserController;
 
 class Application
 {
@@ -24,10 +22,6 @@ class Application
         '/uploadfile' => [
             'controller' => UploadController::class,
             'action' => 'uploadIn'
-        ],
-        '/show' => [
-            'controller' => ShowController::class,
-            'action' => 'showImage'
         ]
     ];
 
