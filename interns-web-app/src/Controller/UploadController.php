@@ -16,19 +16,19 @@ class UploadController extends AbstractController
         return self::FILEPATH . $this->nameImage . '.png';
     }
 
-    private function isImage($img,$i): bool
+    private function validate(array $img,$i)
     {
         $extension = explode('.', $img['name'][$i]);
         $extension = end($extension);
 
         if ($img['size'][$i] > 2097152) {
-            return false;
+            throw new \Exception('файл не может весить больше 2мб');
         }
 
         if (!in_array($extension, $this->allowed)) {
-            return false;
+            throw new \Exception('загружать можно только изображения');
         }
-        return true;
+
     }
 
     public function uploadIn(): void
@@ -37,8 +37,10 @@ class UploadController extends AbstractController
         $countFiles = count($files['name']);
         for ($i = 0; $i < $countFiles; $i++) {
 
-            if (!$this->isImage($files, $i)) {
-                exit("Загружать можно только изображения весом меньше 2мб");
+            try {
+                $this->validate($files,$i);
+            }catch (\Exception $e){
+                echo "ошибка: ", $e->getMessage(),"\n";
             }
 
             move_uploaded_file($files['tmp_name'][$i], $this->fileDir());
