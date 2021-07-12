@@ -2,4 +2,7 @@
     Отправить этот файл: <input name="userfile" type="file" />
     <input type="submit" value="Отправить файл" />
 </form>
+<form action="/">
+    <button>На главную страницу</button>
+</form>
 

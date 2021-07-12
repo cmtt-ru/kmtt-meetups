@@ -23,6 +23,9 @@
     }
 </style>
 <body>
-    Страница с именем пользователя: <?=$params['user']->getName(); ?>
+Страница с именем пользователя: <?=$params['user']->getName(); ?>
+<form action="/">
+    <button>На главную страницу</button>
+</form>
 </body>
 </html>

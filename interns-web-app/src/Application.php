@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App;
 
 use App\Controller\MainController;
+use App\Controller\RandomController;
 use App\Controller\ShowController;
 use App\Controller\UploadController;
 use App\Controller\UserController;
@@ -40,8 +41,15 @@ class Application
         '/show' => [
             'controller' => ShowController::class,
             'action' => 'showImage'
+        ],
+        '/random' => [
+            'controller' => RandomController::class,
+            'action' => 'random'
+        ],
+        '/randomshow' => [
+            'controller' => RandomController::class,
+            'action' => 'showInt'
         ]
-
     ];
 
     /**

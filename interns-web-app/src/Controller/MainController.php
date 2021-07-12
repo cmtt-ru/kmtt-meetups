@@ -9,13 +9,13 @@ use App\Model\User;
  *
  * @package App\Controller
  */
-class MainController
+class MainController extends AbstractController
 {
     /**
      * Returns main page message
      */
     public function index(): void
     {
-        echo 'This is super web-app';
+        $this->render('main-page');
     }
 }
