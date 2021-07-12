@@ -7,11 +7,7 @@ namespace App\Controller;
 class UploadController extends AbstractController
 {
     public $nameImage;
-    public $uploadedFiles = [];
-    public $countImage;
-    public $check;
-    public $image;
-    public $allowed = array('jpg', 'png', 'jped');
+    public $allowed = array('jpg', 'png', 'jpeg');
     private const FILEPATH = ROOT . '/uploaded/';
 
     public function fileDir(): string
@@ -20,37 +16,35 @@ class UploadController extends AbstractController
         return self::FILEPATH . $this->nameImage . '.png';
     }
 
-    private function isImage($img, $i): bool
+    private function isImage($img,$i): bool
     {
-        $this->check = explode('.', $img['name'][$i]);
-        $this->check = end($this->check);
-
-        if (!in_array($this->check, $this->allowed)) {
-            exit("Загружать можно только картинки");
-        }
+        $extension = explode('.', $img['name'][$i]);
+        $extension = end($extension);
 
         if ($img['size'][$i] > 2097152) {
-            exit ("загружать можно только картинки весом меньше 2мб");
+            return false;
         }
 
+        if (!in_array($extension, $this->allowed)) {
+            return false;
+        }
         return true;
     }
 
     public function uploadIn(): void
     {
-        $this->uploadedFiles = [];
-        $this->countImage = count($_FILES['files']['name']);
-        $this->image = $_FILES['files'];
-        for ($i = 0; $i < $this->countImage; $i++) {
+        $files = $_FILES['files'];
+        $countFiles = count($files['name']);
+        for ($i = 0; $i < $countFiles; $i++) {
 
-            if (!$this->isImage($this->image, $i)) {
-                continue;
+            if (!$this->isImage($files, $i)) {
+                exit("Загружать можно только изображения весом меньше 2мб");
             }
 
-            move_uploaded_file($this->image['tmp_name'][$i], $this->fileDir());
-            $this->uploadedFiles[] = "<img width='100px' height='100px' src='" . $this->nameImage . ".png'/><br>";
+            move_uploaded_file($files['tmp_name'][$i], $this->fileDir());
+            $uploadedFiles[] = "<img width='100px' height='100px' src='" . $this->nameImage . ".png'/><br>";
         }
-        $this->render('uploadedImages', $this->uploadedFiles);
+        $this->render('uploadedImages', $uploadedFiles);
     }
 }
 
