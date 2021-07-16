@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App;
 
 use App\Controller\MainController;
+use App\Controller\RandomController;
 use App\Controller\UploadController;
 
 class Application
@@ -22,6 +23,14 @@ class Application
         '/uploadfile' => [
             'controller' => UploadController::class,
             'action' => 'uploadIn'
+        ],
+        '/random' => [
+            'controller' => RandomController::class,
+            'action' => 'random'
+        ],
+        '/randomshow' => [
+            'controller' => RandomController::class,
+            'action' => 'showInt'
         ]
     ];
 

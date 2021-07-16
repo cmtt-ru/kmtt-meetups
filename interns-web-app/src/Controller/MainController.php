@@ -9,6 +9,6 @@ class MainController extends AbstractController
 {
     public function mainPage(): void
     {
-        $this->render('form-upload');
+        $this->render('main-page');
     }
 }
