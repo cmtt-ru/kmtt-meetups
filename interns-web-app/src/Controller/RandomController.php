@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 class RandomController extends AbstractController
 {
     public function random(): void
