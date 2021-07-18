@@ -6,11 +6,17 @@ namespace App\Controller;
 
 class RandomController extends AbstractController
 {
+    /**
+     * Outputs view of random page
+     */
     public function random(): void
     {
         $this->render('random-page');
     }
 
+    /**
+     * Outputs [count] random ints from [min] to [max] to random page
+     */
     public function showInt(): void
     {
         $this->render('random-page');
