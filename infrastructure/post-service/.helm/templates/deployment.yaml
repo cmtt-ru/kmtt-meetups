@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include ".helm.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include ".helm.selectorLabels" . | nindent 8 }}
+  template:
+    metadata:
+      labels:
+      {{- include ".helm.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ include ".helm.fullname" . }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - protocol: TCP
+              containerPort: 80

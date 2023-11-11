@@ -1,0 +1,13 @@
+replicaCount: 3
+
+image:
+  repository: post-service
+  pullPolicy: Never
+  tag: "v2"
+
+service:
+  type: NodePort
+  port: 8080
+
+ingress:
+  host: post-service.local

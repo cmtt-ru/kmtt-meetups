@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-v1-canary
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/canary: "true"
+#    nginx.ingress.kubernetes.io/canary-weight: "90"
+#    nginx.ingress.kubernetes.io/canary-by-cookie: "v2_enabled"
+    nginx.ingress.kubernetes.io/canary-by-header: "X-Version-Decision"
+    nginx.ingress.kubernetes.io/canary-by-header-value: "v2"
+spec:
+  rules:
+    - host: app.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: app-v2
+                port:
+                  number: 8080

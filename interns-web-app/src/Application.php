@@ -17,11 +17,11 @@ class Application
             'controller' => MainController::class,
             'action' => 'index'
         ],
-        '/user/name' => [
+        '/file/upload' => [
             'controller' => UserController::class,
             'action' => 'getName'
         ],
-        '/user/id' => [
+        '/file/name' => [
             'controller' => UserController::class,
             'action' => 'getId'
         ]
