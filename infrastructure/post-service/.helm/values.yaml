@@ -3,7 +3,7 @@ replicaCount: 3
 image:
   repository: post-service
   pullPolicy: Never
-  tag: "v2"
+  tag: "v3"
 
 service:
   type: NodePort

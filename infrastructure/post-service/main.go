@@ -8,7 +8,7 @@ import (
 
 func main() {
 	router := gin.Default()
-	router.GET("/", findPostById)
+	router.GET("/posts/", findPostById)
 
 	router.Run(":80")
 }

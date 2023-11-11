@@ -1,0 +1,10 @@
+host: blog-platform.local
+services:
+  users:
+    path: /users
+    name: user-service
+    port: 8080
+  posts:
+    path: /posts
+    name: post-service
+    port: 8080
