@@ -1,21 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
-use App\Model\User;
 
-/**
- * Class MainController
- *
- * @package App\Controller
- */
-class MainController
+class MainController extends AbstractController
 {
     /**
-     * Returns main page message
-     */
-    public function index(): void
+    * Outputs view of main page
+    */
+    public function mainPage(): void
     {
-        echo 'This is super web-app';
+        $this->render('main-page');
     }
 }
