@@ -7,6 +7,7 @@ type Post struct {
 	Title    string `json:"title"`
 	Content  string `json:"content"`
 	AuthorId int    `json:"authorId"`
+	Version  int    `json:"version"`
 }
 
 func FindPost(id int) (*Post, error) {
@@ -28,24 +29,28 @@ func getPosts() []Post {
 			Title:    "YandexGPT",
 			Content:  "YandexGPT is AI chatbot from Yandex",
 			AuthorId: 1,
+			Version:  2,
 		},
 		{
 			ID:       2,
 			Title:    "ChatGPT",
 			Content:  "ChatGPT is AI chatbot from OpenAI",
 			AuthorId: 1,
+			Version:  2,
 		},
 		{
 			ID:       3,
 			Title:    "BingAI",
 			Content:  "BingAI is AI chatbot from Microsoft",
 			AuthorId: 2,
+			Version:  2,
 		},
 		{
 			ID:       4,
 			Title:    "Bard",
 			Content:  "Bard is AI chatbot from Google",
 			AuthorId: 3,
+			Version:  2,
 		},
 	}
 }

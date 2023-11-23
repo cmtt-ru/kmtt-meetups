@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: post-service-svc
+spec:
+  selector:
+    app: post-service
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
+  type: LoadBalancer

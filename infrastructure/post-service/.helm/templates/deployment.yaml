@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include ".helm.fullname" . }}
+  labels:
+    {{- include ".helm.selectorLabels" . | nindent 8 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:

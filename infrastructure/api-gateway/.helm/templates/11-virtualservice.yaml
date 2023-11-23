@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: post-service
+spec:
+  hosts:
+    - "blog-platform.local"
+  gateways:
+    - post-service-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /posts
+      route:
+        - destination:
+            host: post-service-svc
+            subset: v1
+          weight: 100
+        - destination:
+            host: post-service-svc
+            subset: v2
+          weight: 0

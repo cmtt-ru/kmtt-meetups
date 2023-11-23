@@ -1,10 +1,11 @@
 {{- define ".helm.fullname" -}}
-{{- .Chart.Name | trimSuffix "-" }}
+{{- .Values.image.repository }}-{{ .Values.image.tag }}
 {{- end }}
 
 {{/*
 Selector labels
 */}}
 {{- define ".helm.selectorLabels" -}}
-app: {{ printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+version: {{ .Values.image.tag }}
+app: {{ .Values.image.repository }}
 {{- end }}

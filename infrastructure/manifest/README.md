@@ -16,5 +16,8 @@ Minikube build
 minikube image build -t app .
 ```
 
+```
+kubectl port-forward svc/kiali 20001:20001 -n istio-system
+```
 
 
